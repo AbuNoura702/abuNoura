@@ -1,58 +1,218 @@
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الألعاب الكلاسيكية</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>🎮 موقع الألعاب</h1>
+            </div>
+            <div class="nav-links">
+                <a href="#" onclick="showGame('home')">الرئيسية</a>
+                <a href="#" onclick="showGame('wordGame')">كلمات كلاسيك</a>
+                <a href="#" onclick="showGame('letterGame')">لعبة الحروف</a>
+                <a href="#" onclick="showGame('spyGame')">الجاسوس</a>
+                <a href="#" onclick="showGame('snakeGame')">السلم والثعبان</a>
+                <a href="#" onclick="showGame('roulette')">روليت الروسية</a>
+                <a href="#" onclick="showGame('quiz')">أسئلة عامة</a>
+                <a href="#" onclick="toggleChat()">الشات</a>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Primary Meta Tags -->
-    <title>نزال - منصة الألعاب التنافسية العربية</title>
-    <meta name="title" content="نزال - منصة الألعاب التنافسية العربية" />
-    <meta name="description" content="نزال هي منصة ألعاب تنافسية عربية تجمع أفضل الألعاب الجماعية. العب تحدي الأذكياء، لعبة الحروف، لعبة سين، وسياق مع أصدقائك وعائلتك." />
-    <meta name="keywords" content="نزال، ألعاب جماعية، ألعاب تنافسية، تحدي الأذكياء، لعبة الحروف، سياق، ألعاب عربية، ألعاب ثقافية" />
-    <meta name="author" content="نزال" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://nezzal.com/" />
+    <main>
+        <!-- الصفحة الرئيسية -->
+        <div id="home" class="game-container active">
+            <div class="welcome-section">
+                <h2>مرحباً بك في موقع الألعاب الكلاسيكية</h2>
+                <p>استمتع بمجموعة متنوعة من الألعاب الشيقة</p>
+                <div class="games-grid">
+                    <div class="game-card" onclick="showGame('wordGame')">
+                        <h3>🔤 كلمات كلاسيك</h3>
+                        <p>اكتشف الكلمة المخفية</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('letterGame')">
+                        <h3>📝 لعبة الحروف</h3>
+                        <p>اكمل الكلمة بالحرف المناسب</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('spyGame')">
+                        <h3>🕵️ الجاسوس</h3>
+                        <p>اكتشف من هو الجاسوس</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('snakeGame')">
+                        <h3>🐍 السلم والثعبان</h3>
+                        <p>لعبة اللوح الكلاسيكية</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('roulette')">
+                        <h3>🎯 روليت الروسية</h3>
+                        <p>لعبة الحظ والمخاطرة</p>
+                    </div>
+                    <div class="game-card" onclick="showGame('quiz')">
+                        <h3>❓ أسئلة عامة</h3>
+                        <p>اختبر معلوماتك العامة</p>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://nezzal.com/" />
-    <meta property="og:title" content="نزال - منصة الألعاب التنافسية العربية" />
-    <meta property="og:description" content="نزال هي منصة ألعاب تنافسية عربية تجمع أفضل الألعاب الجماعية. العب تحدي الأذكياء، لعبة الحروف، لعبة سين، وسياق مع أصدقائك وعائلتك." />
-    <meta property="og:image" content="https://game-hub--a7rebdi.replit.app/opengraph.jpg" />
-    <meta property="og:locale" content="ar_SA" />
-    <meta property="og:site_name" content="نزال" />
+            <!-- ربط تويتش -->
+            <div class="twitch-section">
+                <h3>🎥 البث المباشر</h3>
+                <div class="twitch-embed">
+                    <iframe src="https://player.twitch.tv/?channel=YOUR_TWITCH_CHANNEL&parent=YOUR_DOMAIN" 
+                            width="100%" height="400" allowfullscreen></iframe>
+                </div>
+                <div class="twitch-chat">
+                    <iframe src="https://www.twitch.tv/embed/YOUR_TWITCH_CHANNEL/chat?parent=YOUR_DOMAIN" 
+                            width="100%" height="400"></iframe>
+                </div>
+            </div>
+        </div>
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@nezzalx" />
-    <meta name="twitter:url" content="https://nezzal.com/" />
-    <meta name="twitter:title" content="نزال - منصة الألعاب التنافسية العربية" />
-    <meta name="twitter:description" content="نزال هي منصة ألعاب تنافسية عربية تجمع أفضل الألعاب الجماعية. العب تحدي الأذكياء، لعبة الحروف، لعبة سين، وسياق مع أصدقائك وعائلتك." />
-    <meta name="twitter:image" content="https://game-hub--a7rebdi.replit.app/opengraph.jpg" />
+        <!-- لعبة كلمات كلاسيك -->
+        <div id="wordGame" class="game-container">
+            <h2>🔤 كلمات كلاسيك</h2>
+            <div class="game-board">
+                <div id="wordDisplay" class="word-display"></div>
+                <div class="game-info">
+                    <p>المحاولات المتبقية: <span id="attemptsLeft">6</span></p>
+                    <p>النقاط: <span id="wordGameScore">0</span></p>
+                </div>
+                <div class="letter-input">
+                    <input type="text" id="letterInput" placeholder="ادخل حرف" maxlength="1">
+                    <button onclick="guessLetter()">تخمين</button>
+                </div>
+                <div id="guessedLetters" class="guessed-letters">
+                    <p>الحروف المستخدمة: <span id="usedLetters"></span></p>
+                </div>
+                <button onclick="newWordGame()" class="new-game-btn">لعبة جديدة</button>
+            </div>
+        </div>
 
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#7c3aed" />
-    <meta name="msapplication-TileColor" content="#7c3aed" />
+        <!-- لعبة الحروف -->
+        <div id="letterGame" class="game-container">
+            <h2>📝 لعبة الحروف</h2>
+            <div class="game-board">
+                <div id="letterQuestion" class="question-display"></div>
+                <div class="letter-options" id="letterOptions"></div>
+                <div class="game-info">
+                    <p>النقاط: <span id="letterGameScore">0</span></p>
+                </div>
+                <button onclick="newLetterGame()" class="new-game-btn">سؤال جديد</button>
+            </div>
+        </div>
 
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="نزال" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-D3oQ7xp8.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-nT1EmWyc.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(() => {});
-        });
-      }
-    </script>
-  </body>
+        <!-- لعبة الجاسوس -->
+        <div id="spyGame" class="game-container">
+            <h2>🕵️ لعبة الجاسوس</h2>
+            <div class="game-board">
+                <div class="spy-setup">
+                    <h3>إعداد اللعبة</h3>
+                    <input type="number" id="playersCount" placeholder="عدد اللاعبين (3-8)" min="3" max="8">
+                    <button onclick="startSpyGame()">بدء اللعبة</button>
+                </div>
+                <div id="spyGameArea" class="spy-game-area" style="display:none;">
+                    <div class="location-display">
+                        <h3>المكان: <span id="currentLocation"></span></h3>
+                    </div>
+                    <div class="players-list" id="playersList"></div>
+                    <div class="spy-controls">
+                        <button onclick="revealSpy()">كشف الجاسوس</button>
+                        <button onclick="newSpyGame()">لعبة جديدة</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- لعبة السلم والثعبان -->
+        <div id="snakeGame" class="game-container">
+            <h2>🐍 السلم والثعبان</h2>
+            <div class="game-board">
+                <div class="board-container">
+                    <div id="gameBoard" class="game-board-grid"></div>
+                </div>
+                <div class="game-controls">
+                    <div class="players-info">
+                        <div class="player-info">
+                            <span class="player1">🔴 اللاعب 1: <span id="player1Position">1</span></span>
+                        </div>
+                        <div class="player-info">
+                            <span class="player2">🔵 اللاعب 2: <span id="player2Position">1</span></span>
+                        </div>
+                    </div>
+                    <div class="current-player">
+                        دور: <span id="currentPlayer">اللاعب 1</span>
+                    </div>
+                    <div class="dice-area">
+                        <div id="diceResult" class="dice">🎲</div>
+                        <button onclick="rollDice()" id="rollButton">ارمي النرد</button>
+                    </div>
+                    <button onclick="resetSnakeGame()" class="new-game-btn">لعبة جديدة</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- روليت الروسية -->
+        <div id="roulette" class="game-container">
+            <h2>🎯 روليت الروسية</h2>
+            <div class="game-board">
+                <div class="roulette-gun">
+                    <div id="rouletteGun" class="gun">🔫</div>
+                </div>
+                <div class="roulette-info">
+                    <p>الخرطوشة في الحجرة رقم: <span id="bulletChamber">؟</span></p>
+                    <p>الحجرة الحالية: <span id="currentChamber">1</span></p>
+                    <p>النقاط: <span id="rouletteScore">0</span></p>
+                </div>
+                <div class="roulette-controls">
+                    <button onclick="pullTrigger()" id="triggerBtn">اضغط الزناد</button>
+                    <button onclick="spinCylinder()" class="spin-btn">دوران الأسطوانة</button>
+                    <button onclick="newRouletteGame()" class="new-game-btn">لعبة جديدة</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- لعبة الأسئلة العامة -->
+        <div id="quiz" class="game-container">
+            <h2>❓ أسئلة عامة</h2>
+            <div class="game-board">
+                <div id="quizQuestion" class="question-display"></div>
+                <div id="quizOptions" class="quiz-options"></div>
+                <div class="quiz-info">
+                    <p>السؤال: <span id="questionNumber">1</span> من <span id="totalQuestions">10</span></p>
+                    <p>النقاط: <span id="quizScore">0</span></p>
+                </div>
+                <button onclick="newQuizGame()" class="new-game-btn">بدء اختبار جديد</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- نافذة الشات -->
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h3>💬 الشات</h3>
+            <button onclick="toggleChat()" class="close-chat">×</button>
+        </div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="اكتب رسالتك..." onkeypress="handleChatKeyPress(event)">
+            <button onclick="sendMessage()">إرسال</button>
+        </div>
+        <div class="chat-commands">
+            <h4>أوامر الشات:</h4>
+            <p>/help - عرض المساعدة</p>
+            <p>/score - عرض النقاط</p>
+            <p>/time - عرض الوقت</p>
+            <p>/clear - مسح الشات</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="chatbot.js"></script>
+</body>
 </html>
