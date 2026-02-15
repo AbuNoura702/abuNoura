@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Abu Noura – Chat Games</title>
+<style>
+body { background-color:#2e0057; color:#fff; font-family:Arial; text-align:center; padding:20px;}
+h1 { font-size:50px; margin-bottom:10px;}
+#output { margin-top:30px; font-size:35px; min-height:150px;}
+button { font-size:20px; padding:10px 20px; margin:5px; border:none; border-radius:10px; background:#7200b8; color:#fff; cursor:pointer;}
+button:hover { background:#9d3fff;}
+#players { margin-top:20px; font-size:25px; color:#ffd700;}
+#languageToggle { position:fixed; top:20px; right:20px; padding:10px 20px; background-color:#9d3fff; cursor:pointer;}
+</style>
+</head>
+<body>
+
+<h1>Abu Noura</h1>
+<button id="languageToggle">🇸🇦 / 🇺🇸</button>
+
+<div>
+  <button onclick="runCommand('question')">❓ سؤال عشوائي</button>
+  <button onclick="runCommand('challenge')">🔥 تحدي</button>
+  <button onclick="runCommand('roulette')">🎡 Russian Roulette</button>
+  <button onclick="runCommand('words')">🧠 الكلمات</button>
+  <button onclick="runCommand('lettergrid')">🔤 خلية الحروف</button>
+  <button onclick="runCommand('spy')">🕵️‍♂️ الجاسوس</button>
+</div>
+
+<div id="output">اضغط أي زر لتجربة الألعاب!</div>
+<div id="players">اللاعبون: لا أحد بعد</div>
+
+<script>
+let language = 'ar';
+let players = [];
+
+// البيانات
+const questions = {
+  ar:["أكثر واحد يضيع جواله؟","أكثر واحد يتأخر عن المواعيد؟","أكثر واحد ينام بالبث؟"],
+  en:["Who is most likely to lose their phone?","Who is most likely to be late?","Who is most likely to sleep during the stream?"]
+};
+const challenges = {
+  ar:["ابتسم 10 ثواني 😁","غيّر صوتك 15 ثانية 🎙️","اسكت 20 ثانية 😶"],
+  en:["Smile 10 sec 😁","Change your voice 15 sec 🎙️","Stay silent 20 sec 😶"]
+};
+const roulette = {
+  ar:["نجوت! 😎","ابتسم 10 ثواني 😁","غيّر صوتك 15 ثانية 🎙️","اسكت 20 ثانية 😶"],
+  en:["You survived! 😎","Smile 10 sec 😁","Change voice 15 sec 🎙️","Stay silent 20 sec 😶"]
+};
+const classicWords = { ar:["بحر","رمل","قمر"], en:["Sea","Sand","Moon"] };
+const letterGridArr = {
+  ar:["ب ح ل م ك","س ر ن ا ي","ق ط و ر ت","ج م ع ي ن","ش و ل ب ك"],
+  en:["S E A M D","F R U I T","C A T S Y","B O O K S","P L A Y X"]
+};
+const spyWords = {
+  ar:["تفاح","موز","برتقال","جاسوس"], 
+  en:["Apple","Banana","Orange","Spy"]
+};
+
+// دوال مساعدة
+function getRandom(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+function addPlayer(name){
+  if(!players.includes(name)){
+    players.push(name);
+    document.getElementById("players").innerText = "اللاعبون: " + players.join(", ");
+  }
+}
+
+function runCommand(cmd){
+  let text = "";
+  let randomName = "لاعب"+(players.length+1);
+  addPlayer(randomName);
+  
+  switch(cmd){
+    case 'question': text=getRandom(questions[language]); break;
+    case 'challenge': text=getRandom(challenges[language]); break;
+    case 'roulette': text=getRandom(roulette[language]); break;
+    case 'words': text=getRandom(classicWords[language]); break;
+    case 'lettergrid': text=getRandom(letterGridArr[language]); break;
+    case 'spy': text=getRandom(spyWords[language]); break;
+  }
+  document.getElementById("output").innerText = text;
+}
+
+// تبديل اللغة
+document.getElementById("languageToggle").addEventListener("click", ()=>{
+  language = language==='ar'?'en':'ar';
+  document.getElementById("output").innerText = "Language: "+(language==='ar'?'عربي':'English');
+});
+</script>
+
+</body>
+</html>
